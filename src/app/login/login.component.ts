@@ -30,4 +30,8 @@ export class LoginComponent {
       }
     );
   }
+
+  navigateToRegister() {
+    this.router.navigate(['/register']); // Navega a la página de registro
+  }
 }
