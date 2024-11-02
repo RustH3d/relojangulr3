@@ -20,16 +20,18 @@ export class RegisterComponent {
 
     register() {
         this.authService.register(this.username, this.password).subscribe({
-            next: (response) => {
-                this.message = 'Registro exitoso';
-                this.isError = false;
-            },
-            error: (error) => {
-                console.error('Error al registrar:', error);
-                this.message = 'Error en el registro';
-                this.isError = true;
-            }
+          next: (response) => {
+            this.message = response.message; // Accede al mensaje
+            this.isError = false;
+            // Redirige o realiza otra acción después del registro exitoso
+          },
+          error: (error) => {
+            console.error('Error al registrar:', error);
+            this.message = error.error?.error || 'Error en el registro';
+            this.isError = true;
+          }
         });
-    }
+      }
+    
 }
 

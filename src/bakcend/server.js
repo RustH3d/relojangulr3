@@ -39,14 +39,26 @@ sequelize.sync();
 
 // Ruta de Registro
 app.post('/register', async (req, res) => {
-  console.log('Datos recibidos del frontend:', req.body)
+  console.log('Datos recibidos del frontend:', req.body);
   const { username, password } = req.body;
+
+  // Verifica que se hayan proporcionado tanto el nombre de usuario como la contraseña
+  if (!username || !password) {
+    return res.status(400).json({ error: 'Faltan datos: username y password son requeridos' });
+  }
+
+  // Encriptar la contraseña
   const hashedPassword = await bcrypt.hash(password, 10);
+
   try {
+    // Crear el nuevo usuario en la base de datos
     const user = await User.create({ username, password: hashedPassword });
-    res.status(201).send('Usuario registrado');
+
+    // Enviar respuesta exitosa con el usuario creado
+    res.status(201).json({ message: 'Usuario registrado exitosamente', user: { id: user.id, username: user.username } });
   } catch (error) {
-    res.status(400).send(error.message);
+    // Manejo de errores: enviar un mensaje de error estructurado
+    res.status(400).json({ error: 'Error al registrar el usuario: ' + error.message });
   }
 });
 
