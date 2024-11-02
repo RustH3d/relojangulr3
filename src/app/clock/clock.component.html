@@ -1,6 +1,24 @@
 <!-- src/app/clock/clock.component.html -->
-<div class="clock">
-    <h1>Hora Actual</h1>
-    <h2>{{ currentTime }}</h2>
+<div class="clock-container">
+  <h1>Reloj</h1>
+  <button (click)="toggleClockView()">
+    Cambiar a {{ showDigital ? 'Reloj Analógico' : 'Reloj Digital' }}
+  </button>
+
+  <div *ngIf="showDigital">
+    <h2>Reloj Digital</h2>
+    <p>{{ currentTime }}</p>
   </div>
+
+  <div *ngIf="!showDigital">
+    <h2>Reloj Analógico</h2>
+    <div class="analog-clock">
+      <div class="hand hour" [ngStyle]="{'transform': hourRotation}"></div>
+      <div class="hand minute" [ngStyle]="{'transform': minuteRotation}"></div>
+      <div class="hand second" [ngStyle]="{'transform': secondRotation}"></div>
+    </div>
+  </div>
+</div>
+
+
   
