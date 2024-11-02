@@ -23,7 +23,9 @@ export class LoginComponent {
     this.authService.login(this.username, this.password).subscribe(
       (response) => {
         localStorage.setItem('token', response.token);
-        this.router.navigate(['/dashboard']);
+        //this.router.navigate(['/dashboard']);
+        this.router.navigate(['/clock']); // Asegúrate de que esto redirija a tu nuevo componente de reloj
+
       },
       (error) => {
         alert('Credenciales incorrectas');

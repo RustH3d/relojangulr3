@@ -1,0 +1,15 @@
+/* src/app/clock/clock.component.css */
+.clock {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  h1 {
+    font-size: 2.5em;
+  }
+  
+  h2 {
+    font-size: 3em;
+    color: #333;
+  }
+  
