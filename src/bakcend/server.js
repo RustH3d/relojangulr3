@@ -33,7 +33,7 @@ const User = sequelize.define('user', {
     allowNull: false
   }
 });
-
+//loooooooool
 // Sincronizar el modelo con la base de datos
 sequelize.sync();
 
