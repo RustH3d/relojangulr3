@@ -1,16 +1,16 @@
-<div class="clock-container" [style.backgroundColor]="backgroundColor">
+<!-- src/app/clock/clock.component.html -->
+<div class="clock-container">
   <h1>Reloj</h1>
-  
   <button (click)="toggleClockView()">
-    Cambiar a {{ currentView === 'digital' ? 'Reloj Analógico' : currentView === 'analog' ? 'Reloj de Colores Cambiantes' : 'Reloj Digital' }}
+    Cambiar a {{ showDigital ? 'Reloj Analógico' : 'Reloj Digital' }}
   </button>
 
-  <div *ngIf="currentView === 'digital'">
+  <div *ngIf="showDigital">
     <h2>Reloj Digital</h2>
     <p>{{ currentTime }}</p>
   </div>
 
-  <div *ngIf="currentView === 'analog'">
+  <div *ngIf="!showDigital">
     <h2>Reloj Analógico</h2>
     <div class="analog-clock">
       <div class="hand hour" [ngStyle]="{'transform': hourRotation}"></div>
@@ -19,17 +19,27 @@
     </div>
   </div>
 
-  <div *ngIf="currentView === 'colorChanging'">
-    <h2>Reloj de Colores Cambiantes</h2>
-    <p>{{ currentTime }}</p>
-    <div>
-      <label for="inputHours">Hora:</label>
-      <input type="number" id="inputHours" [(ngModel)]="inputHours" min="0" max="23">
-      <label for="inputMinutes">Minutos:</label>
-      <input type="number" id="inputMinutes" [(ngModel)]="inputMinutes" min="0" max="59">
-      <label for="inputSeconds">Segundos:</label>
-      <input type="number" id="inputSeconds" [(ngModel)]="inputSeconds" min="0" max="59">
-      <button (click)="setCustomTime()">Establecer Hora Personalizada</button>
-    </div>
+  <!-- Controles para cambiar la hora -->
+  <div *ngIf="isEditing">
+    <h2>Cambiar Hora</h2>
+    <label>
+      Hora:
+      <input type="range" [(ngModel)]="hourInput" min="0" max="23" (input)="onSliderChange()"/>
+      <span>{{ hourInput }}</span>
+    </label>
+    <label>
+      Minuto:
+      <input type="range" [(ngModel)]="minuteInput" min="0" max="59" (input)="onSliderChange()"/>
+      <span>{{ minuteInput }}</span>
+    </label>
+    <label>
+      Segundo:
+      <input type="range" [(ngModel)]="secondInput" min="0" max="59" (input)="onSliderChange()"/>
+      <span>{{ secondInput }}</span>
+    </label>
+    <button (click)="applyTime()">Aplicar</button>
   </div>
+
+  <!-- Botón para editar la hora -->
+  <button *ngIf="!isEditing" (click)="showTimeInputForm()">Cambiar Hora</button>
 </div>

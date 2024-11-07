@@ -1,67 +1,79 @@
+/* src/app/clock/clock.component.css */
 .clock-container {
   text-align: center;
-  transition: background-color 0.5s ease;
-  height: 100vh; /* Asegúrate de que el contenedor ocupe toda la altura de la ventana */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
-.time-input {
-  margin: 20px 0;
-}
-
-.time-input label {
-  margin: 0 5px;
-}
-
-.time-input input {
-  width: 50px;
-  margin: 0 5px;
-}
-
+/* src/app/clock/clock.component.css */
 .analog-clock {
+  position: relative;
   width: 200px;
   height: 200px;
-  border: 10px solid black;
+  border: 10px solid #333;
   border-radius: 50%;
-  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hand {
   position: absolute;
-  background: black;
   bottom: 50%;
   left: 50%;
-  transform-origin: bottom;
-  transition: transform 0.5s ease-in-out;
+  transform-origin: bottom center;
+  transition: transform 1s ease-in-out; /* Agregamos la transición */
+  pointer-events: none; /* No permite interacción con las agujas */
 }
 
 .hour {
   width: 6px;
   height: 50px;
-  margin-left: -3px;
+  background-color: #000;
+  transform-origin: bottom center;
 }
 
 .minute {
   width: 4px;
   height: 70px;
-  margin-left: -2px;
+  background-color: #555;
+  transform-origin: bottom center;
 }
 
 .second {
   width: 2px;
   height: 90px;
-  margin-left: -1px;
-  background: red;
+  background-color: red;
+  transform-origin: bottom center;
 }
 
-.clock-display {
-  font-size: 48px;
-  font-weight: bold;
-  color: #333;
-  background-color: #f0f0f0;
-  padding: 20px;
-  border-radius: 10px;
+
+
+.controls {
+  margin-top: 20px;
 }
+
+button {
+  padding: 5px 10px;
+  margin: 5px;
+  font-size: 16px;
+}
+
+.time-input-form {
+  margin-top: 20px;
+}
+
+.slider-container {
+  margin-bottom: 15px;
+}
+
+.slider-container label {
+  margin-right: 10px;
+}
+
+.slider-container input {
+  width: 200px;
+}
+
+.slider-container span {
+  margin-left: 10px;
+}
+
