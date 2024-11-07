@@ -1,18 +1,19 @@
-/* src/app/clock/clock.component.css */
 .clock-container {
   text-align: center;
+  margin-top: 20px;
 }
 
-/* src/app/clock/clock.component.css */
 .analog-clock {
   position: relative;
   width: 200px;
   height: 200px;
   border: 10px solid #333;
   border-radius: 50%;
+  background-color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .hand {
@@ -20,45 +21,44 @@
   bottom: 50%;
   left: 50%;
   transform-origin: bottom center;
-  transition: transform 1s ease-in-out; /* Agregamos la transición */
-  pointer-events: none; /* No permite interacción con las agujas */
+  transition: transform 1s ease-in-out;
+  pointer-events: none;
 }
 
 .hour {
   width: 6px;
   height: 50px;
   background-color: #000;
-  transform-origin: bottom center;
 }
 
 .minute {
   width: 4px;
   height: 70px;
   background-color: #555;
-  transform-origin: bottom center;
 }
 
 .second {
   width: 2px;
   height: 90px;
   background-color: red;
-  transform-origin: bottom center;
 }
 
-
-
-.controls {
+.binary-clock {
   margin-top: 20px;
 }
 
-button {
-  padding: 5px 10px;
-  margin: 5px;
-  font-size: 16px;
+.binary-clock span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin: 2px;
+  background-color: #ddd;
+  text-align: center;
+  line-height: 20px;
 }
 
-.time-input-form {
-  margin-top: 20px;
+.binary-clock span[data-active="1"] {
+  background-color: #00f;
 }
 
 .slider-container {
@@ -76,4 +76,3 @@ button {
 .slider-container span {
   margin-left: 10px;
 }
-

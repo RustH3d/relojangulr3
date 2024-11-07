@@ -12,96 +12,92 @@ import { FormsModule } from '@angular/forms';
 })
 
 export class ClockComponent implements OnInit, OnDestroy {
-  showDigital = true; // Controla si se muestra el reloj digital o analógico
-  private intervalId: any; // Almacena el ID del intervalo
-  private userTime!: Date; // Mantiene la hora modificada por el usuario
-  private accumulatedSeconds: number = 0; // Variable para acumular los segundos
-
-  // Variables para controlar los deslizadores
-  hourInput: number = 0;
-  minuteInput: number = 0;
-  secondInput: number = 0;
-
-  // Bandera para controlar si estamos en modo de edición
+  showDigital = true;
+  showAnalog = false;
+  showBinary = false;
+  private intervalId: any;
+  userTime: Date = new Date();
   isEditing = false;
 
+  // Variables para los sliders
+  hourInput: number = this.userTime.getHours();
+  minuteInput: number = this.userTime.getMinutes();
+  secondInput: number = this.userTime.getSeconds();
+
   ngOnInit() {
-    this.userTime = new Date(); // Inicializa la hora modificada por el usuario
-    this.startAutoUpdate(); // Empieza a actualizar la hora cada segundo
+    this.startAutoUpdate();
   }
 
   ngOnDestroy() {
-    clearInterval(this.intervalId); // Limpia el intervalo al destruir el componente
+    clearInterval(this.intervalId);
   }
 
-  // Empieza a actualizar la hora cada segundo desde la hora del usuario
   startAutoUpdate() {
     this.intervalId = setInterval(() => {
-      if (!this.isEditing) { // Si no estamos editando, avanza la hora
-        this.userTime.setSeconds(this.userTime.getSeconds() + 1); // Incrementa el segundo
-        this.accumulatedSeconds++; // Acumula los segundos para el movimiento fluido
+      if (!this.isEditing) {
+        this.userTime.setSeconds(this.userTime.getSeconds() + 1);
       }
     }, 1000);
   }
 
-  // Detiene la actualización automática de la hora
   stopAutoUpdate() {
     clearInterval(this.intervalId);
   }
 
-  // Retorna la hora en formato digital
-  get currentTime(): string {
-    return this.userTime.toLocaleTimeString(); 
+  toggleClockView(type: string) {
+    this.showDigital = type === 'digital';
+    this.showAnalog = type === 'analog';
+    this.showBinary = type === 'binary';
   }
 
-  // Reloj analógico
-  get hourRotation(): string {
-    return `rotate(${this.userTime.getHours() * 30}deg)`; // Cada hora representa 30 grados
+  // Función para habilitar el modo de edición
+  enableEditing() {
+    this.isEditing = true;
+    this.stopAutoUpdate();  // Detener la actualización automática cuando estamos editando
   }
 
-  get minuteRotation(): string {
-    return `rotate(${this.userTime.getMinutes() * 6}deg)`; // Cada minuto representa 6 grados
-  }
-
-  get secondRotation(): string {
-    // La aguja de los segundos se mueve en función del acumulado de segundos
-    return `rotate(${this.accumulatedSeconds * 6}deg)`; // Cada segundo representa 6 grados
-  }
-
-  // Alterna entre la vista digital y analógica
-  toggleClockView() {
-    this.showDigital = !this.showDigital;
-  }
-
-  // Muestra los controles deslizantes para cambiar la hora
-  showTimeInputForm() {
-    this.isEditing = true; // Activa el modo de edición
-    this.stopAutoUpdate(); // Detiene la actualización automática
-
-    // Establece los valores de los deslizadores con la hora actual
-    this.hourInput = this.userTime.getHours();
-    this.minuteInput = this.userTime.getMinutes();
-    this.secondInput = this.userTime.getSeconds();
-  }
-
-  // Aplica la hora seleccionada por los deslizadores
-  applyTime() {
-    // Establecemos la hora del usuario sin sobrescribirla con la hora del sistema
+  // Función para aplicar los cambios de la hora
+  applyTimeChanges() {
     this.userTime.setHours(this.hourInput);
     this.userTime.setMinutes(this.minuteInput);
     this.userTime.setSeconds(this.secondInput);
-    
-    this.isEditing = false; // Desactiva el modo de edición
-    this.startAutoUpdate(); // Reanuda la actualización automática
-
-    // Reinicia los segundos acumulados para que la aguja de los segundos se mueva suavemente desde el nuevo punto
-    this.accumulatedSeconds = this.secondInput;
+    this.isEditing = false;
+    this.startAutoUpdate(); // Reinicia la actualización automática
   }
 
-  // Detecta cuando el usuario está interactuando con el deslizador y detiene la actualización automática
-  onSliderChange() {
-    if (this.isEditing) {
-      this.stopAutoUpdate(); // Detiene la actualización automática mientras se cambia la hora
-    }
+  // Métodos para obtener las rotaciones y binarios
+  get currentTime(): string {
+    return this.userTime.toLocaleTimeString();
+  }
+
+  get hourRotation(): string {
+    return `rotate(${this.userTime.getHours() * 30}deg)`;
+  }
+
+  get minuteRotation(): string {
+    return `rotate(${this.userTime.getMinutes() * 6}deg)`;
+  }
+
+  get secondRotation(): string {
+    return `rotate(${this.userTime.getSeconds() * 6}deg)`;
+  }
+
+  toBinaryArray(value: number, bits: number): number[] {
+    return value.toString(2).padStart(bits, '0').split('').map(Number);
+  }
+
+  get hoursBinary(): number[][] {
+    const hours = this.userTime.getHours();
+    return [this.toBinaryArray(Math.floor(hours / 10), 2), this.toBinaryArray(hours % 10, 4)];
+  }
+
+  get minutesBinary(): number[][] {
+    const minutes = this.userTime.getMinutes();
+    return [this.toBinaryArray(Math.floor(minutes / 10), 3), this.toBinaryArray(minutes % 10, 4)];
+  }
+
+  get secondsBinary(): number[][] {
+    const seconds = this.userTime.getSeconds();
+    return [this.toBinaryArray(Math.floor(seconds / 10), 3), this.toBinaryArray(seconds % 10, 4)];
   }
 }
