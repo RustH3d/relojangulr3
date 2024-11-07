@@ -20,7 +20,6 @@ export class ClockComponent implements OnInit, OnDestroy {
   userTime: Date = new Date();
   isEditing = false;
 
-  // Variables para los sliders
   hourInput: number = this.userTime.getHours();
   minuteInput: number = this.userTime.getMinutes();
   secondInput: number = this.userTime.getSeconds();
@@ -34,6 +33,8 @@ export class ClockComponent implements OnInit, OnDestroy {
   }
 
   startAutoUpdate() {
+    // Asegúrate de que el intervalo se detiene antes de reiniciarlo
+    clearInterval(this.intervalId);
     this.intervalId = setInterval(() => {
       if (!this.isEditing) {
         this.userTime.setSeconds(this.userTime.getSeconds() + 1);
@@ -54,18 +55,20 @@ export class ClockComponent implements OnInit, OnDestroy {
 
   enableEditing() {
     this.isEditing = true;
-    this.stopAutoUpdate();  // Detener la actualización automática cuando estamos editando
+    this.stopAutoUpdate();  // Detener la actualización automática
   }
 
   applyTimeChanges() {
+    // Aplicar los cambios a la hora, minuto y segundo
     this.userTime.setHours(this.hourInput);
     this.userTime.setMinutes(this.minuteInput);
     this.userTime.setSeconds(this.secondInput);
+
+    // Deshabilitar la edición y reiniciar el intervalo
     this.isEditing = false;
-    this.startAutoUpdate(); // Reinicia la actualización automática
+    this.startAutoUpdate();  // Reinicia la actualización automática con los nuevos valores
   }
 
-  // Métodos para obtener las rotaciones y binarios
   get currentTime(): string {
     return this.userTime.toLocaleTimeString();
   }
@@ -101,18 +104,17 @@ export class ClockComponent implements OnInit, OnDestroy {
     return [this.toBinaryArray(Math.floor(seconds / 10), 3), this.toBinaryArray(seconds % 10, 4)];
   }
 
-  // Funciones para manejar el fondo y los íconos del reloj personalizado
   get customClockBackground(): string {
     const hour = this.userTime.getHours();
     if (hour >= 6 && hour < 18) {
-      return 'linear-gradient(to right, #FF7E5F, #FEB47B)'; // Colores cálidos (mañana/día)
+      return 'linear-gradient(to right, #FF7E5F, #FEB47B)'; // Colores cálidos
     } else {
-      return 'linear-gradient(to right, #2C3E50, #34495E)'; // Colores fríos (noche)
+      return 'linear-gradient(to right, #2C3E50, #34495E)'; // Colores fríos
     }
   }
 
   get sunOrMoonIcon(): string {
     const hour = this.userTime.getHours();
-    return hour >= 6 && hour < 18 ? '☀️' : '🌙'; // Sol durante el día, luna durante la noche
+    return hour >= 6 && hour < 18 ? '☀️' : '🌙';
   }
 }
