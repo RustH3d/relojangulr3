@@ -1,6 +1,24 @@
-/* src/app/clock/clock.component.css */
 .clock-container {
   text-align: center;
+  transition: background-color 0.5s ease;
+  height: 100vh; /* Asegúrate de que el contenedor ocupe toda la altura de la ventana */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.time-input {
+  margin: 20px 0;
+}
+
+.time-input label {
+  margin: 0 5px;
+}
+
+.time-input input {
+  width: 50px;
+  margin: 0 5px;
 }
 
 .analog-clock {
@@ -37,4 +55,13 @@
   height: 90px;
   margin-left: -1px;
   background: red;
+}
+
+.clock-display {
+  font-size: 48px;
+  font-weight: bold;
+  color: #333;
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 10px;
 }

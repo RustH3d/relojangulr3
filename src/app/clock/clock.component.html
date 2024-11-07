@@ -1,16 +1,16 @@
-<!-- src/app/clock/clock.component.html -->
-<div class="clock-container">
+<div class="clock-container" [style.backgroundColor]="backgroundColor">
   <h1>Reloj</h1>
+  
   <button (click)="toggleClockView()">
-    Cambiar a {{ showDigital ? 'Reloj Analógico' : 'Reloj Digital' }}
+    Cambiar a {{ currentView === 'digital' ? 'Reloj Analógico' : currentView === 'analog' ? 'Reloj de Colores Cambiantes' : 'Reloj Digital' }}
   </button>
 
-  <div *ngIf="showDigital">
+  <div *ngIf="currentView === 'digital'">
     <h2>Reloj Digital</h2>
     <p>{{ currentTime }}</p>
   </div>
 
-  <div *ngIf="!showDigital">
+  <div *ngIf="currentView === 'analog'">
     <h2>Reloj Analógico</h2>
     <div class="analog-clock">
       <div class="hand hour" [ngStyle]="{'transform': hourRotation}"></div>
@@ -18,7 +18,18 @@
       <div class="hand second" [ngStyle]="{'transform': secondRotation}"></div>
     </div>
   </div>
+
+  <div *ngIf="currentView === 'colorChanging'">
+    <h2>Reloj de Colores Cambiantes</h2>
+    <p>{{ currentTime }}</p>
+    <div>
+      <label for="inputHours">Hora:</label>
+      <input type="number" id="inputHours" [(ngModel)]="inputHours" min="0" max="23">
+      <label for="inputMinutes">Minutos:</label>
+      <input type="number" id="inputMinutes" [(ngModel)]="inputMinutes" min="0" max="59">
+      <label for="inputSeconds">Segundos:</label>
+      <input type="number" id="inputSeconds" [(ngModel)]="inputSeconds" min="0" max="59">
+      <button (click)="setCustomTime()">Establecer Hora Personalizada</button>
+    </div>
+  </div>
 </div>
-
-
-  
