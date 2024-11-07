@@ -1,63 +1,64 @@
-<div>
-  <button (click)="toggleClockView('digital')">Digital</button>
-  <button (click)="toggleClockView('analog')">Analógico</button>
-  <button (click)="toggleClockView('binary')">Binario</button>
-</div>
+<div class="clock-container">
+  <!-- Botones para elegir el tipo de reloj -->
+  <button (click)="toggleClockView('digital')">Reloj Digital</button>
+  <button (click)="toggleClockView('analog')">Reloj Analógico</button>
+  <button (click)="toggleClockView('binary')">Reloj Binario</button>
+  <button (click)="toggleClockView('custom')">Reloj Personalizado</button>
 
-<!-- Reloj Digital -->
-<div *ngIf="showDigital">
-  <p>{{ currentTime }}</p>
-</div>
+  <!-- Reloj Digital -->
+  <div *ngIf="showDigital">
+    <div class="digital-clock">
+      <span>{{ currentTime }}</span>
+    </div>
 
-<!-- Reloj Analógico -->
-<div *ngIf="showAnalog" class="analog-clock">
-  <div class="hand hour" [ngStyle]="{'transform': hourRotation}"></div>
-  <div class="hand minute" [ngStyle]="{'transform': minuteRotation}"></div>
-  <div class="hand second" [ngStyle]="{'transform': secondRotation}"></div>
-</div>
+    <div class="slider-container">
+      <label for="hour">Hora:</label>
+      <input type="range" id="hour" min="0" max="23" [(ngModel)]="hourInput">
+      <span>{{ hourInput }}</span>
+    </div>
 
-<!-- Reloj Binario -->
-<div *ngIf="showBinary" class="binary-clock">
-  <div>
-    <p>Horas:</p>
-    <div *ngFor="let group of hoursBinary">
-      <span *ngFor="let bit of group" [attr.data-active]="bit">{{ bit }}</span>
+    <div class="slider-container">
+      <label for="minute">Minuto:</label>
+      <input type="range" id="minute" min="0" max="59" [(ngModel)]="minuteInput">
+      <span>{{ minuteInput }}</span>
+    </div>
+
+    <div class="slider-container">
+      <label for="second">Segundo:</label>
+      <input type="range" id="second" min="0" max="59" [(ngModel)]="secondInput">
+      <span>{{ secondInput }}</span>
+    </div>
+
+    <button (click)="applyTimeChanges()">Aplicar Cambios</button>
+  </div>
+
+  <!-- Reloj Analógico -->
+  <div *ngIf="showAnalog" class="analog-clock">
+    <div class="hand hour" [style.transform]="hourRotation"></div>
+    <div class="hand minute" [style.transform]="minuteRotation"></div>
+    <div class="hand second" [style.transform]="secondRotation"></div>
+  </div>
+
+  <!-- Reloj Binario -->
+  <div *ngIf="showBinary">
+    <div class="binary-clock">
+      <div *ngFor="let bit of hoursBinary">
+        <span [attr.data-active]="bit">{{ bit }}</span>
+      </div>
+      <div *ngFor="let bit of minutesBinary">
+        <span [attr.data-active]="bit">{{ bit }}</span>
+      </div>
+      <div *ngFor="let bit of secondsBinary">
+        <span [attr.data-active]="bit">{{ bit }}</span>
+      </div>
     </div>
   </div>
-  <div>
-    <p>Minutos:</p>
-    <div *ngFor="let group of minutesBinary">
-      <span *ngFor="let bit of group" [attr.data-active]="bit">{{ bit }}</span>
+
+  <!-- Reloj Personalizado -->
+  <div *ngIf="showCustom" class="custom-clock" [ngStyle]="{'background': customClockBackground}">
+    <div class="custom-time">
+      <p>{{ sunOrMoonIcon }}</p>
+      <p>{{ currentTime }}</p>
     </div>
   </div>
-  <div>
-    <p>Segundos:</p>
-    <div *ngFor="let group of secondsBinary">
-      <span *ngFor="let bit of group" [attr.data-active]="bit">{{ bit }}</span>
-    </div>
-  </div>
-</div>
-
-<!-- Controles para cambiar la hora -->
-<div *ngIf="!isEditing">
-  <button (click)="enableEditing()">Editar hora</button>
-</div>
-
-<div class="time-input-form" *ngIf="isEditing">
-  <div class="slider-container">
-    <label for="hour">Hora:</label>
-    <input type="range" id="hour" min="0" max="23" [(ngModel)]="hourInput">
-    <span>{{ hourInput }}</span>
-  </div>
-  <div class="slider-container">
-    <label for="minute">Minuto:</label>
-    <input type="range" id="minute" min="0" max="59" [(ngModel)]="minuteInput">
-    <span>{{ minuteInput }}</span>
-  </div>
-  <div class="slider-container">
-    <label for="second">Segundo:</label>
-    <input type="range" id="second" min="0" max="59" [(ngModel)]="secondInput">
-    <span>{{ secondInput }}</span>
-  </div>
-  <button (click)="applyTimeChanges()">Aplicar</button>
 </div>

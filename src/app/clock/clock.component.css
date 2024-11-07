@@ -3,6 +3,11 @@
   margin-top: 20px;
 }
 
+.digital-clock span {
+  font-size: 2rem;
+  color: black;
+}
+
 .analog-clock {
   position: relative;
   width: 200px;
@@ -70,9 +75,15 @@
 }
 
 .slider-container input {
-  width: 200px;
+  width: 80%;
 }
 
-.slider-container span {
-  margin-left: 10px;
+.custom-clock {
+  padding: 20px;
+  border-radius: 10px;
+  color: white;
+}
+
+.custom-time {
+  font-size: 1.5rem;
 }
