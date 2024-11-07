@@ -82,7 +82,9 @@ export class ClockComponent implements OnInit, OnDestroy {
   }
 
   get secondRotation(): string {
-    return `rotate(${this.userTime.getSeconds() * 6}deg)`;
+    const seconds = this.userTime.getSeconds();
+    const rotation = (seconds % 60) * 6;  // % 60 asegura que no se salga de los 360 grados
+    return `rotate(${rotation}deg)`;
   }
 
   toBinaryArray(value: number, bits: number): number[] {
