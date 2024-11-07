@@ -11,6 +11,7 @@
       <span>{{ currentTime }}</span>
     </div>
 
+    <!-- Sliders -->
     <div class="slider-container">
       <label for="hour">Hora:</label>
       <input type="range" id="hour" min="0" max="23" [(ngModel)]="hourInput">
@@ -39,6 +40,29 @@
     <div class="hand second" [style.transform]="secondRotation"></div>
   </div>
 
+  <!-- Sliders -->
+  <div *ngIf="showAnalog">
+    <div class="slider-container">
+      <label for="hourAnalog">Hora:</label>
+      <input type="range" id="hourAnalog" min="0" max="23" [(ngModel)]="hourInput">
+      <span>{{ hourInput }}</span>
+    </div>
+
+    <div class="slider-container">
+      <label for="minuteAnalog">Minuto:</label>
+      <input type="range" id="minuteAnalog" min="0" max="59" [(ngModel)]="minuteInput">
+      <span>{{ minuteInput }}</span>
+    </div>
+
+    <div class="slider-container">
+      <label for="secondAnalog">Segundo:</label>
+      <input type="range" id="secondAnalog" min="0" max="59" [(ngModel)]="secondInput">
+      <span>{{ secondInput }}</span>
+    </div>
+
+    <button (click)="applyTimeChanges()">Aplicar Cambios</button>
+  </div>
+
   <!-- Reloj Binario -->
   <div *ngIf="showBinary">
     <div class="binary-clock">
@@ -54,11 +78,57 @@
     </div>
   </div>
 
+  <!-- Sliders -->
+  <div *ngIf="showBinary">
+    <div class="slider-container">
+      <label for="hourBinary">Hora:</label>
+      <input type="range" id="hourBinary" min="0" max="23" [(ngModel)]="hourInput">
+      <span>{{ hourInput }}</span>
+    </div>
+
+    <div class="slider-container">
+      <label for="minuteBinary">Minuto:</label>
+      <input type="range" id="minuteBinary" min="0" max="59" [(ngModel)]="minuteInput">
+      <span>{{ minuteInput }}</span>
+    </div>
+
+    <div class="slider-container">
+      <label for="secondBinary">Segundo:</label>
+      <input type="range" id="secondBinary" min="0" max="59" [(ngModel)]="secondInput">
+      <span>{{ secondInput }}</span>
+    </div>
+
+    <button (click)="applyTimeChanges()">Aplicar Cambios</button>
+  </div>
+
   <!-- Reloj Personalizado -->
   <div *ngIf="showCustom" class="custom-clock" [ngStyle]="{'background': customClockBackground}">
     <div class="custom-time">
       <p>{{ sunOrMoonIcon }}</p>
       <p>{{ currentTime }}</p>
     </div>
+  </div>
+
+  <!-- Sliders -->
+  <div *ngIf="showCustom">
+    <div class="slider-container">
+      <label for="hourCustom">Hora:</label>
+      <input type="range" id="hourCustom" min="0" max="23" [(ngModel)]="hourInput">
+      <span>{{ hourInput }}</span>
+    </div>
+
+    <div class="slider-container">
+      <label for="minuteCustom">Minuto:</label>
+      <input type="range" id="minuteCustom" min="0" max="59" [(ngModel)]="minuteInput">
+      <span>{{ minuteInput }}</span>
+    </div>
+
+    <div class="slider-container">
+      <label for="secondCustom">Segundo:</label>
+      <input type="range" id="secondCustom" min="0" max="59" [(ngModel)]="secondInput">
+      <span>{{ secondInput }}</span>
+    </div>
+
+    <button (click)="applyTimeChanges()">Aplicar Cambios</button>
   </div>
 </div>
