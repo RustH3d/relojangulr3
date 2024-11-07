@@ -46,24 +46,64 @@
   width: 2px;
   height: 90px;
   background-color: red;
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform-origin: 50% 100%;
+  pointer-events: none;
 }
 
 .binary-clock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-top: 20px;
 }
 
-.binary-clock span {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
+.binary-row {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+  width: 100%;
+  border: 2px solid #5f0c0c; /* Rectángulo alrededor de cada fila */
+  padding: 5px 0;
+  box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
+}
+
+.binary-group {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.binary-digit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 2px;
-  background-color: #ddd;
-  text-align: center;
-  line-height: 20px;
+  width: 60px;
+  height: 30px;
+  border: 2px solid #ad1a1a; /* Cuadro alrededor del dígito */
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+.binary-digit span {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .binary-clock span[data-active="1"] {
-  background-color: #00f;
+  background-color: blue; /* Azul para los 1 */
+  color: #fff; /* Blanco para el texto */
+}
+
+.binary-clock span[data-active="0"] {
+  background-color: #f0f0f0; /* Color de fondo para el 0 */
+  color: #000; /* Negro para el texto */
 }
 
 .slider-container {

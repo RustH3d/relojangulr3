@@ -117,4 +117,6 @@ export class ClockComponent implements OnInit, OnDestroy {
     const hour = this.userTime.getHours();
     return hour >= 6 && hour < 18 ? '☀️' : '🌙';
   }
+
+  
 }

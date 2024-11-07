@@ -40,7 +40,7 @@
     <div class="hand second" [style.transform]="secondRotation"></div>
   </div>
 
-  <!-- Sliders -->
+  <!-- Sliders para reloj analógico -->
   <div *ngIf="showAnalog">
     <div class="slider-container">
       <label for="hourAnalog">Hora:</label>
@@ -66,20 +66,27 @@
   <!-- Reloj Binario -->
   <div *ngIf="showBinary">
     <div class="binary-clock">
-      <div *ngFor="let bit of hoursBinary">
-        <span [attr.data-active]="bit">{{ bit }}</span>
+      <!-- Hora en formato binario -->
+      <div class="binary-group">
+        <div *ngFor="let bit of hoursBinary" class="binary-digit">
+          <span [attr.data-active]="bit">{{ bit }}</span>
+        </div>
       </div>
-      <div *ngFor="let bit of minutesBinary">
-        <span [attr.data-active]="bit">{{ bit }}</span>
+      <!-- Minuto en formato binario -->
+      <div class="binary-group">
+        <div *ngFor="let bit of minutesBinary" class="binary-digit">
+          <span [attr.data-active]="bit">{{ bit }}</span>
+        </div>
       </div>
-      <div *ngFor="let bit of secondsBinary">
-        <span [attr.data-active]="bit">{{ bit }}</span>
+      <!-- Segundo en formato binario -->
+      <div class="binary-group">
+        <div *ngFor="let bit of secondsBinary" class="binary-digit">
+          <span [attr.data-active]="bit">{{ bit }}</span>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Sliders -->
-  <div *ngIf="showBinary">
+    <!-- Sliders para reloj binario -->
     <div class="slider-container">
       <label for="hourBinary">Hora:</label>
       <input type="range" id="hourBinary" min="0" max="23" [(ngModel)]="hourInput">
@@ -109,7 +116,7 @@
     </div>
   </div>
 
-  <!-- Sliders -->
+  <!-- Sliders para reloj personalizado -->
   <div *ngIf="showCustom">
     <div class="slider-container">
       <label for="hourCustom">Hora:</label>
