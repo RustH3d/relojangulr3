@@ -71,3 +71,32 @@
   .controls button:hover {
     background-color: #b01717;
   }
+
+  .area-espectadores {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .persona {
+    width: 10px;
+    height: 10px;
+    background-color: #000;
+    border-radius: 50%;
+    margin: 2px;
+    opacity: 0.8;
+  }
+  
+  .persona.animar {
+    animation: celebrar 1s ease-in-out;
+  }
+  
+  @keyframes celebrar {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }

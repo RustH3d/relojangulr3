@@ -31,4 +31,8 @@
 
     
   </div>
+
+  <div class="area-espectadores">
+    <div *ngFor="let persona of [].constructor(cantidadDeGente)" class="persona" [ngClass]="{ 'animar': modoCelebracion }"></div>
+  </div>
   

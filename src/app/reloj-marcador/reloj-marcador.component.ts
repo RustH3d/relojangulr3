@@ -11,16 +11,19 @@ import { FormsModule } from '@angular/forms';
 })
 export class RelojMarcadorComponent implements OnInit, OnDestroy {
   private intervalId: any;
-  private segundosContador: number = 0; // Contador de segundos para modo manual
+  private segundosContador: number = 0;
 
   public horas: number = 0;
   public minutos: number = 0;
   public horaSlider: number = 0;
   public minutosSlider: number = 0;
   private isManualUpdate: boolean = false;
+  public cantidadDeGente: number = 0;
+  public modoCelebracion: boolean = false;
 
   ngOnInit(): void {
     this.iniciarReloj();
+    this.actualizarGente(); // Inicializa la cantidad de gente
   }
 
   ngOnDestroy(): void {
@@ -35,20 +38,21 @@ export class RelojMarcadorComponent implements OnInit, OnDestroy {
         const fecha = new Date();
         this.horas = fecha.getHours();
         this.minutos = fecha.getMinutes();
+        this.actualizarGente();
       } else {
         this.segundosContador++;
         if (this.segundosContador >= 60) {
           this.incrementarTiempo();
-          this.segundosContador = 0; // Reinicia el contador de segundos
+          this.segundosContador = 0;
         }
       }
-    }, 1000); // Se ejecuta cada segundo para actualizar la vista
+    }, 1000);
   }
 
   get horasFormateadas(): string {
     return this.horas < 10 ? `0${this.horas}` : `${this.horas}`;
   }
-  
+
   get minutosFormateados(): string {
     return this.minutos < 10 ? `0${this.minutos}` : `${this.minutos}`;
   }
@@ -58,6 +62,7 @@ export class RelojMarcadorComponent implements OnInit, OnDestroy {
     if (this.minutos >= 60) {
       this.minutos = 0;
       this.horas++;
+      this.animarCelebracion(); // Animación al cambiar la hora
     }
     if (this.horas >= 24) {
       this.horas = 0;
@@ -67,11 +72,9 @@ export class RelojMarcadorComponent implements OnInit, OnDestroy {
   actualizarHoraMinutos(): void {
     this.horas = this.horaSlider;
     this.minutos = this.minutosSlider;
-    this.isManualUpdate = true; // Activa el modo manual
+    this.isManualUpdate = true;
+    this.segundosContador = 0;
 
-    this.segundosContador = 0; // Resetea el contador de segundos
-
-    // Reinicia el intervalo para que refleje el cambio y continúe en modo manual
     if (this.intervalId) {
       clearInterval(this.intervalId);
     }
@@ -79,15 +82,29 @@ export class RelojMarcadorComponent implements OnInit, OnDestroy {
   }
 
   volverModoAutomatico(): void {
-    this.isManualUpdate = false; // Regresa al modo automático
-
-    // Reinicia el intervalo para seguir la hora del sistema
+    this.isManualUpdate = false;
     if (this.intervalId) {
       clearInterval(this.intervalId);
     }
     this.iniciarReloj();
-  
- /*  restablecerHora(): void {
-    this.isManualUpdate = false; // Permite la actualización automática
-  } */
-}}
+  }
+
+  actualizarGente(): void {
+    if (this.horas >= 6 && this.horas < 9) {
+      this.cantidadDeGente = 20; // Temprano, poca gente
+    } else if (this.horas >= 9 && this.horas < 15) {
+      this.cantidadDeGente = 50; // Mañana/mediodía, más gente
+    } else if (this.horas >= 15 && this.horas < 20) {
+      this.cantidadDeGente = 100; // Tarde, lleno total
+    } else {
+      this.cantidadDeGente = 30; // Noche, menor cantidad
+    }
+  }
+
+  animarCelebracion(): void {
+    this.modoCelebracion = true;
+    setTimeout(() => {
+      this.modoCelebracion = false;
+    }, 2000); // Duración de la animación
+  }
+}
