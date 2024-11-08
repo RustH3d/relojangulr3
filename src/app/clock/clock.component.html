@@ -136,6 +136,17 @@
       <span>{{ secondInput }}</span>
     </div>
 
-    <button (click)="applyTimeChanges()">Aplicar Cambios</button>
-  </div>
+    
+  
+    <!-- Mostrar el RelojMarcador solo si la propiedad es verdadera -->
+  
 </div>
+
+<div class="marcador-container">
+  <button (click)="toggleRelojMarcador()">
+    {{ mostrarRelojMarcador ? 'Ocultar Reloj Marcador' : 'Mostrar Reloj Marcador' }}
+  </button>
+
+  <!-- Usamos la directiva *ngIf para mostrar u ocultar el componente hijo -->
+  <app-reloj-marcador *ngIf="mostrarRelojMarcador"></app-reloj-marcador>
+  </div>

@@ -1,0 +1,44 @@
+/* Estilo para el marcador */
+.marcador {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #d01d1d;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(197, 35, 35, 0.4);
+    width: 80%;
+    max-width: 700px;
+    margin: 50px auto;
+    font-family: 'Digital-7', sans-serif; /* Fuente estilo digital */
+  }
+  
+  .equipo {
+    text-align: center;
+    margin: 0 20px;
+  }
+  
+  .titulo {
+    font-size: 20px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+  }
+  
+  .numero {
+    font-size: 120px;
+    font-weight: bold;
+    letter-spacing: 10px;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.6), 0 0 25px rgba(255, 255, 255, 0.9); /* Efecto de resplandor */
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro para resaltar los números */
+    padding: 15px;
+    border-radius: 15px;
+  }
+  
+  .separador {
+    font-size: 120px;
+    font-weight: bold;
+    letter-spacing: 10px;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.6), 0 0 25px rgba(255, 255, 255, 0.9);
+  }
+  

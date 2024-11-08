@@ -2,13 +2,14 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RelojMarcadorComponent } from '../reloj-marcador/reloj-marcador.component';
 
 @Component({
   selector: 'app-clock',
   standalone: true,
   templateUrl: './clock.component.html',
   styleUrls: ['./clock.component.css'],
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RelojMarcadorComponent],
 })
 
 export class ClockComponent implements OnInit, OnDestroy {
@@ -120,5 +121,10 @@ export class ClockComponent implements OnInit, OnDestroy {
     return hour >= 6 && hour < 18 ? '☀️' : '🌙';
   }
 
+  mostrarRelojMarcador: boolean = false; 
+
   
+  toggleRelojMarcador() {
+    this.mostrarRelojMarcador = !this.mostrarRelojMarcador;
+  }
 }
