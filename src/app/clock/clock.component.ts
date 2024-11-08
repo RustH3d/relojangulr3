@@ -3,13 +3,15 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RelojMarcadorComponent } from '../reloj-marcador/reloj-marcador.component';
+import { RelojLedComponent } from '../reloj-led/reloj-led.component';
+
 
 @Component({
   selector: 'app-clock',
   standalone: true,
   templateUrl: './clock.component.html',
   styleUrls: ['./clock.component.css'],
-  imports: [CommonModule, FormsModule, RelojMarcadorComponent],
+  imports: [CommonModule, FormsModule, RelojMarcadorComponent, RelojLedComponent],
 })
 
 export class ClockComponent implements OnInit, OnDestroy {
@@ -126,5 +128,12 @@ export class ClockComponent implements OnInit, OnDestroy {
   
   toggleRelojMarcador() {
     this.mostrarRelojMarcador = !this.mostrarRelojMarcador;
+  }
+
+  mostrarRelojLed: boolean = false; 
+
+  
+  toggleRelojLed() {
+    this.mostrarRelojLed = !this.mostrarRelojLed;
   }
 }

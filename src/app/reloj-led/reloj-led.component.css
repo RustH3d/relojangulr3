@@ -1,0 +1,65 @@
+.reloj-nubes {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .hora h1 {
+    font-size: 4em;
+    color: white;
+    font-family: 'Arial', sans-serif;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+  }
+  
+  .nubes {
+    position: absolute;
+    top: 20%;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    z-index: 1;
+  }
+  
+  .nube {
+    position: absolute;
+    background: url('https://www.transparenttextures.com/patterns/clouds.png') repeat;
+    width: 200px;
+    height: 100px;
+    opacity: 0.8;
+    animation: moverNubes 60s linear infinite;
+  }
+  
+  .nube1 {
+    top: 20%;
+    animation-duration: 90s; /* Nube más lenta */
+    animation-delay: -20s;
+  }
+  
+  .nube2 {
+    top: 40%;
+    animation-duration: 120s; /* Nube media */
+    animation-delay: -50s;
+  }
+  
+  .nube3 {
+    top: 60%;
+    animation-duration: 80s; /* Nube más rápida */
+    animation-delay: -10s;
+  }
+  
+  @keyframes moverNubes {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  
