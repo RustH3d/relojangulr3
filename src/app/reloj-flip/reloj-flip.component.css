@@ -76,3 +76,24 @@
   background-color: rgba(255, 255, 255, 0.5);
   animation: salpicar 0.5s ease-out;
 }
+
+.gota::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background-color: rgba(0, 170, 255, 0.5);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  pointer-events: none;
+  transition: width 0.5s, height 0.5s, opacity 0.5s;
+}
+
+.gota:hover::after {
+  width: 100px;
+  height: 100px;
+  opacity: 1;
+}

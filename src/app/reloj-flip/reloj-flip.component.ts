@@ -35,10 +35,16 @@ export class RelojFlipComponent {
 
 onMouseEnter(): void {
   this.colorGota = '#ffcc00'; // Cambia el color al pasar el mouse
+  this.mostrarOndas = true;
+  setTimeout(() => this.mostrarOndas = false, 500); // Desactiva la onda después de 500ms
 }
 
 onMouseLeave(): void {
   this.colorGota = '#00aaff'; // Vuelve al color original
 }
+
+public mostrarOndas: boolean = false;
+
+
   
 }
