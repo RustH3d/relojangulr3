@@ -23,7 +23,7 @@ export class RelojMarcadorComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.iniciarReloj();
-    this.actualizarGente(); // Inicializa la cantidad de gente
+    this.actualizarGente(); // Inicializa la cantidad de gente al cargar
   }
 
   ngOnDestroy(): void {
@@ -63,6 +63,7 @@ export class RelojMarcadorComponent implements OnInit, OnDestroy {
       this.minutos = 0;
       this.horas++;
       this.animarCelebracion(); // Animación al cambiar la hora
+      this.actualizarGente(); // Actualiza la cantidad de gente al cambiar la hora
     }
     if (this.horas >= 24) {
       this.horas = 0;
@@ -79,6 +80,7 @@ export class RelojMarcadorComponent implements OnInit, OnDestroy {
       clearInterval(this.intervalId);
     }
     this.iniciarReloj();
+    this.actualizarGente(); // Actualiza la cantidad de gente cuando el usuario cambia la hora manualmente
   }
 
   volverModoAutomatico(): void {
@@ -91,13 +93,15 @@ export class RelojMarcadorComponent implements OnInit, OnDestroy {
 
   actualizarGente(): void {
     if (this.horas >= 6 && this.horas < 9) {
-      this.cantidadDeGente = 20; // Temprano, poca gente
+      this.cantidadDeGente = 20; // Temprano por la mañana
     } else if (this.horas >= 9 && this.horas < 15) {
-      this.cantidadDeGente = 50; // Mañana/mediodía, más gente
+      this.cantidadDeGente = 50; // Media mañana y mediodía
     } else if (this.horas >= 15 && this.horas < 20) {
-      this.cantidadDeGente = 100; // Tarde, lleno total
+      this.cantidadDeGente = 100; // Tarde, hora pico
+    } else if (this.horas >= 20 && this.horas < 24) {
+      this.cantidadDeGente = 70; // Noche
     } else {
-      this.cantidadDeGente = 30; // Noche, menor cantidad
+      this.cantidadDeGente = 10; // Madrugada
     }
   }
 
@@ -105,6 +109,6 @@ export class RelojMarcadorComponent implements OnInit, OnDestroy {
     this.modoCelebracion = true;
     setTimeout(() => {
       this.modoCelebracion = false;
-    }, 2000); // Duración de la animación
+    }, 2000); // Duración de la animación de celebración
   }
 }

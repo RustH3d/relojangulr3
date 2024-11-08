@@ -14,6 +14,10 @@
       <div class="numero" id="minutos">{{ minutosFormateados }}</div>
     </div>
   </div>
+
+  <div class="area-espectadores">
+    <div *ngFor="let persona of [].constructor(cantidadDeGente)" class="persona" [ngClass]="{ 'animar': modoCelebracion }"></div>
+  </div>
   
   <!-- Sliders para cambiar la hora y los minutos -->
   <div class="controls">
@@ -32,7 +36,5 @@
     
   </div>
 
-  <div class="area-espectadores">
-    <div *ngFor="let persona of [].constructor(cantidadDeGente)" class="persona" [ngClass]="{ 'animar': modoCelebracion }"></div>
-  </div>
+  
   
