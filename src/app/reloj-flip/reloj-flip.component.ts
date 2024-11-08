@@ -30,5 +30,15 @@ export class RelojFlipComponent {
   private formatearNumero(num: number): string {
     return num < 10 ? `0${num}` : `${num}`;
   }
+
+  public colorGota: string = '#00aaff';
+
+onMouseEnter(): void {
+  this.colorGota = '#ffcc00'; // Cambia el color al pasar el mouse
+}
+
+onMouseLeave(): void {
+  this.colorGota = '#00aaff'; // Vuelve al color original
+}
   
 }
