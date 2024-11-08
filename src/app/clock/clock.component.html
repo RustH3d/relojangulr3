@@ -154,9 +154,9 @@
 
   <div class="led-container">
     <button (click)="toggleRelojLed()">
-      {{ mostrarRelojMarcador ? 'Ocultar Reloj de Nubes' : 'Mostrar Reloj de Nubes' }}
+      {{ mostrarRelojMarcador ? 'Ocultar Reloj de Gotas' : 'Mostrar Reloj de Gotas' }}
     </button>
   
     <!-- Usamos la directiva *ngIf para mostrar u ocultar el componente hijo -->
-    <app-reloj-led *ngIf="mostrarRelojLed"></app-reloj-led>
+    <app-reloj-flip *ngIf="mostrarRelojFlip"></app-reloj-flip>
     </div>

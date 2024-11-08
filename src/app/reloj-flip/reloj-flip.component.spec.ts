@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RelojLedComponent } from './reloj-led.component';
+import { RelojFlipComponent } from './reloj-flip.component';
 
-describe('RelojLedComponent', () => {
-  let component: RelojLedComponent;
-  let fixture: ComponentFixture<RelojLedComponent>;
+describe('RelojFlipComponent', () => {
+  let component: RelojFlipComponent;
+  let fixture: ComponentFixture<RelojFlipComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RelojLedComponent]
+      imports: [RelojFlipComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(RelojLedComponent);
+    fixture = TestBed.createComponent(RelojFlipComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
