@@ -1,3 +1,4 @@
+
 /* Estilo para el marcador */
 .marcador {
     display: flex;
@@ -42,3 +43,31 @@
     text-shadow: 0 0 15px rgba(255, 255, 255, 0.6), 0 0 25px rgba(255, 255, 255, 0.9);
   }
   
+  .controls {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .controls label {
+    font-size: 18px;
+    margin-right: 10px;
+  }
+  
+  .controls input {
+    width: 200px;
+    margin: 10px;
+  }
+  
+  .controls button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #d01d1d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .controls button:hover {
+    background-color: #b01717;
+  }
