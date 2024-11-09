@@ -1,0 +1,35 @@
+.fogata {
+    border-radius: 50%;
+    background: orange;
+    position: relative;
+    overflow: hidden;
+    transition: width 0.3s ease, height 0.3s ease;
+  }
+  
+  .llama {
+    position: absolute;
+    bottom: 0;
+    width: 20px;
+    height: 50px;
+    background: radial-gradient(circle, yellow, red);
+    border-radius: 50%;
+    animation: flameAnimation 1s infinite ease-in-out;
+  }
+  
+  @keyframes flameAnimation {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+  }
+  
+  .hora-control, .minuto-control {
+    margin-top: 20px;
+  }
+  
+  input[type="range"] {
+    width: 200px;
+  }
+  

@@ -6,6 +6,7 @@ import { RelojMarcadorComponent } from '../reloj-marcador/reloj-marcador.compone
 import { RelojFlipComponent } from '../reloj-flip/reloj-flip.component';
 import { RelojEsferaComponent } from '../reloj-esfera/reloj-esfera.component';
 import { RelojEstrellasComponent } from '../reloj-estrellas/reloj-estrellas.component';
+import { RelojFuegoComponent } from '../reloj-fuego/reloj-fuego.component';
 
 
 @Component({
@@ -13,7 +14,8 @@ import { RelojEstrellasComponent } from '../reloj-estrellas/reloj-estrellas.comp
   standalone: true,
   templateUrl: './clock.component.html',
   styleUrls: ['./clock.component.css'],
-  imports: [CommonModule, FormsModule, RelojMarcadorComponent, RelojFlipComponent, RelojEsferaComponent, RelojEstrellasComponent],
+  imports: [CommonModule, FormsModule, RelojMarcadorComponent, RelojFlipComponent, RelojEsferaComponent, 
+    RelojEstrellasComponent, RelojFuegoComponent],
 })
 
 export class ClockComponent implements OnInit, OnDestroy {
@@ -151,5 +153,12 @@ export class ClockComponent implements OnInit, OnDestroy {
   
   toggleRelojEstrellas() {
     this.mostrarRelojEstrellas = !this.mostrarRelojEstrellas;
+  }
+
+  mostrarRelojFuego: boolean = false; 
+
+  
+  toggleRelojFUEGO() {
+    this.mostrarRelojFuego = !this.mostrarRelojFuego;
   }
 }

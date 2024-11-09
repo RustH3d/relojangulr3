@@ -1,0 +1,17 @@
+<div class="fogata" [style.width.px]="tamanoFogata" [style.height.px]="tamanoFogata">
+    <div *ngFor="let llama of llamas" class="llama"></div>
+  </div>
+  
+  <!-- Controles para cambiar la hora manualmente -->
+  <div class="hora-control">
+    <label for="hora">Hora:</label>
+    <input type="range" id="hora" min="0" max="23" [(ngModel)]="hora" (input)="cambiarHora()">
+    <span>{{ hora }}:{{ minutos | number: '2.0' }}</span>
+  </div>
+  
+  <!-- Controles para cambiar los minutos -->
+  <div class="minuto-control">
+    <label for="minutos">Minutos:</label>
+    <input type="range" id="minutos" min="0" max="59" [(ngModel)]="minutos" (input)="cambiarHora()">
+  </div>
+  
