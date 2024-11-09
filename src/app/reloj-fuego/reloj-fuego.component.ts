@@ -37,4 +37,9 @@ export class RelojFuegoComponent implements OnInit{
   cambiarHora() {
     this.actualizarTamanoFogata();
   }
+
+  calcularPosicionLlama() {
+    // Llama más a la izquierda cuando la fogata es más pequeña
+    return (this.tamanoFogata < 100) ? 10 : 100; // Si la fogata es pequeña, la llama está muy a la izquierda
+  }
 }
