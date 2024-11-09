@@ -1,0 +1,86 @@
+/* src/app/register/register.component.css */
+.register-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px; /* Espacio adicional */
+    background-color: #e0f7fa; /* Azul claro */
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); /* Sombra más notable */
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    margin-bottom: 5px;
+    color: #006064; /* Azul petróleo */
+    font-weight: bold;
+  }
+  
+  input[type="text"],
+  input[type="password"] {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #b2ebf2; /* Borde azul claro */
+    border-radius: 5px;
+    background-color: #ffffff; /* Blanco */
+  }
+  
+  input[type="text"]:focus,
+  input[type="password"]:focus {
+    border-color: #00acc1; /* Azul más intenso */
+    outline: none;
+    box-shadow: 0 0 5px #00acc1;
+  }
+  
+  button {
+    padding: 10px;
+    background-color: #00796b; /* Verde azulado */
+    color: #ffffff; /* Blanco */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    margin-bottom: 20px; /* Espacio extra */
+  }
+  
+  button:hover {
+    background-color: #004d40; /* Verde azulado más oscuro */
+  }
+  
+  .message {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  .message.error {
+    background-color: #ffcdd2; /* Rojo claro */
+    color: #c62828; /* Rojo oscuro */
+  }
+  
+  .message.success {
+    background-color: #c8e6c9; /* Verde claro */
+    color: #2e7d32; /* Verde oscuro */
+  }
+  
+  .go-to-login {
+    margin-top: 20px; /* Más espacio */
+    text-align: center;
+  }
+  
+  .go-to-login a {
+    color: #006064; /* Azul petróleo */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+  
+  .go-to-login a:hover {
+    color: #00acc1; /* Azul más intenso */
+  }
+  

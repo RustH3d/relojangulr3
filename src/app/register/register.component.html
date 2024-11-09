@@ -13,5 +13,10 @@
     <div *ngIf="message" [ngClass]="{'error-message': isError, 'success-message': !isError}">
         {{ message }}
     </div>
+
+    <button (click)="goToLogin()">Volver al login</button>
 </div>
+
+
+
 
