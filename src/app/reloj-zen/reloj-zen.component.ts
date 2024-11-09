@@ -10,17 +10,23 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './reloj-zen.component.css'
 })
 export class RelojZenComponent implements OnInit{
-  hora: string = '';
-  solPosition: string = '';
+  horas: number = 0;
+  minutos: number = 0;
+  segundos: number = 0;
+  progresoHoras: number = 0;
+  progresoMinutos: number = 0;
+  progresoSegundos: number = 0;
 
-  ngOnInit() {
+  ngOnInit(): void {
     setInterval(() => {
       const currentTime = new Date();
-      this.hora = currentTime.toLocaleTimeString();
-
-      // Ajustar la posición del sol (basado en la hora)
-      const angle = (currentTime.getHours() + currentTime.getMinutes() / 60) * 15; // 360/24
-      this.solPosition = `rotate(${angle}deg)`; // Mover la "sombra"
-    }, 1000);
+      this.horas = currentTime.getHours();
+      this.minutos = currentTime.getMinutes();
+      this.segundos = currentTime.getSeconds();
+      
+      this.progresoHoras = (this.horas % 12) / 12 * 100; // De 0 a 100%
+      this.progresoMinutos = this.minutos / 60 * 100;  // De 0 a 100%
+      this.progresoSegundos = this.segundos / 60 * 100;  // De 0 a 100%
+    }, 1000);  // Actualizar cada segundo
   }
 }

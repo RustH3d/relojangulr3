@@ -1,4 +1,11 @@
-<div class="reloj-solar">
-    <div class="hora">{{ hora | date: 'HH:mm:ss' }}</div>
-    <div class="sol" [style.transform]="solPosition"></div> <!-- Sombra del sol -->
+<div class="reloj-barras">
+    <!-- Barra de las horas -->
+    <div class="barra" [style.width.%]="progresoHoras"></div>
+  
+    <!-- Barra de los minutos -->
+    <div class="barra" [style.width.%]="progresoMinutos"></div>
+  
+    <!-- Barra de los segundos -->
+    <div class="barra" [style.width.%]="progresoSegundos"></div>
   </div>
+  

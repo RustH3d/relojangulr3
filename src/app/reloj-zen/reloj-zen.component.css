@@ -1,45 +1,30 @@
-.reloj-solar {
+.reloj-barras {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(180deg, #fceabb, #f8b500); /* Fondo claro con gradiente */
-    position: relative;
+    background-color: #f0f0f0; /* Fondo claro */
   }
   
-  .hora {
-    font-size: 6rem;
-    color: #fff;
-    z-index: 2;
+  .barra {
+    width: 80%; /* Ancho fijo */
+    height: 20px; /* Alto de las barras */
+    margin: 10px 0;
+    background-color: #4caf50; /* Color verde */
+    border-radius: 10px;
+    transition: width 1s ease-in-out;
   }
   
-  .sol {
-    width: 20px;
-    height: 20px;
-    background-color: #ffcc00;
-    border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    z-index: 1;
-    animation: moveShadow 24s infinite linear;
+  .barra:nth-child(1) {
+    background-color: #ff9800; /* Color para las horas */
   }
   
-  @keyframes moveShadow {
-    0% {
-      transform: translate(-50%, -50%) rotate(0deg);
-    }
-    25% {
-      transform: translate(-50%, -50%) rotate(90deg);
-    }
-    50% {
-      transform: translate(-50%, -50%) rotate(180deg);
-    }
-    75% {
-      transform: translate(-50%, -50%) rotate(270deg);
-    }
-    100% {
-      transform: translate(-50%, -50%) rotate(360deg);
-    }
+  .barra:nth-child(2) {
+    background-color: #2196f3; /* Color para los minutos */
+  }
+  
+  .barra:nth-child(3) {
+    background-color: #f44336; /* Color para los segundos */
   }
   
