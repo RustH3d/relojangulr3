@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RelojMarcadorComponent } from '../reloj-marcador/reloj-marcador.component';
 import { RelojFlipComponent } from '../reloj-flip/reloj-flip.component';
+import { RelojEsferaComponent } from '../reloj-esfera/reloj-esfera.component';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { RelojFlipComponent } from '../reloj-flip/reloj-flip.component';
   standalone: true,
   templateUrl: './clock.component.html',
   styleUrls: ['./clock.component.css'],
-  imports: [CommonModule, FormsModule, RelojMarcadorComponent, RelojFlipComponent ],
+  imports: [CommonModule, FormsModule, RelojMarcadorComponent, RelojFlipComponent, RelojEsferaComponent ],
 })
 
 export class ClockComponent implements OnInit, OnDestroy {
@@ -135,5 +136,12 @@ export class ClockComponent implements OnInit, OnDestroy {
   
   toggleRelojLed() {
     this.mostrarRelojFlip = !this.mostrarRelojFlip;
+  }
+
+  mostrarRelojEsfera: boolean = false; 
+
+  
+  toggleRelojEsfera() {
+    this.mostrarRelojEsfera = !this.mostrarRelojEsfera;
   }
 }

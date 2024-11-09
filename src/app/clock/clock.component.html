@@ -160,3 +160,12 @@
     <!-- Usamos la directiva *ngIf para mostrar u ocultar el componente hijo -->
     <app-reloj-flip *ngIf="mostrarRelojFlip"></app-reloj-flip>
     </div>
+
+    <div class="esfera-container">
+      <button (click)="toggleRelojEsfera()">
+        {{ mostrarRelojMarcador ? 'Ocultar Reloj de Esferas' : 'Mostrar Reloj de Esferas' }}
+      </button>
+    
+      <!-- Usamos la directiva *ngIf para mostrar u ocultar el componente hijo -->
+      <app-reloj-esfera *ngIf="mostrarRelojEsfera"></app-reloj-esfera>
+      </div>

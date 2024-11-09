@@ -1,0 +1,12 @@
+<div class="reloj">
+    <div class="esfera hora" [ngStyle]="{ 'transform': 'scale(' + (1 + horas / 12) + ')' }">
+      <span>{{ horas }}</span>
+    </div>
+    <div class="esfera minuto" [ngStyle]="{ 'transform': 'scale(' + (1 + minutos / 60) + ')' }">
+      <span>{{ minutos }}</span>
+    </div>
+    <div class="esfera segundo" [ngStyle]="{ 'transform': 'scale(' + (1 + segundos / 60) + ')' }">
+      <span>{{ segundos }}</span>
+    </div>
+  </div>
+  
