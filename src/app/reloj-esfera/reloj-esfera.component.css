@@ -14,11 +14,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0, 255, 0, 0.6); /* Verde translúcido */
+    background-color: rgba(0, 255, 0, 0.6);
     color: white;
     font-size: 2rem;
-    transition: transform 0.3s ease; /* Suave cambio de tamaño */
-    z-index: 2; /* Se asegura de que las esferas queden por encima de otros elementos */
+  font-family: 'Digital-7', monospace; /* Fuente tipo digital */
+    transition: all 0.5s ease-in-out; /* Transición de tamaño y transformaciones */
+  }
+
+  .esfera:hover {
+    box-shadow: 0 0 20px 5px rgba(0, 255, 0, 0.8); /* Resplandor verde */
+    transform: scale(1.1); /* Efecto de pulsación */
   }
   
   /* Colores para las esferas */
@@ -31,7 +36,7 @@
   }
   
   .segundo {
-    background-color: rgba(255, 255, 0, 0.6); /* Amarillo para segundos */
+    background-color: rgba(87, 12, 94, 0.6); /* Amarillo para segundos */
   }
   
   /* Estilo para los botones, asegurándote de que estén por encima de las esferas */
@@ -42,4 +47,6 @@
     display: flex;
     justify-content: center;
   }
+
+  
   
