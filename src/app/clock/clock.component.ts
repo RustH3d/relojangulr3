@@ -7,6 +7,7 @@ import { RelojFlipComponent } from '../reloj-flip/reloj-flip.component';
 import { RelojEsferaComponent } from '../reloj-esfera/reloj-esfera.component';
 import { RelojEstrellasComponent } from '../reloj-estrellas/reloj-estrellas.component';
 import { RelojFuegoComponent } from '../reloj-fuego/reloj-fuego.component';
+import { RelojZenComponent } from '../reloj-zen/reloj-zen.component';
 
 
 @Component({
@@ -15,7 +16,7 @@ import { RelojFuegoComponent } from '../reloj-fuego/reloj-fuego.component';
   templateUrl: './clock.component.html',
   styleUrls: ['./clock.component.css'],
   imports: [CommonModule, FormsModule, RelojMarcadorComponent, RelojFlipComponent, RelojEsferaComponent, 
-    RelojEstrellasComponent, RelojFuegoComponent],
+    RelojEstrellasComponent, RelojFuegoComponent, RelojZenComponent],
 })
 
 export class ClockComponent implements OnInit, OnDestroy {
@@ -160,5 +161,12 @@ export class ClockComponent implements OnInit, OnDestroy {
   
   toggleRelojFUEGO() {
     this.mostrarRelojFuego = !this.mostrarRelojFuego;
+  }
+
+  mostrarRelojZen: boolean = false; 
+
+  
+  toggleRelojZen() {
+    this.mostrarRelojZen = !this.mostrarRelojZen;
   }
 }

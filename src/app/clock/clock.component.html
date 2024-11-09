@@ -187,3 +187,12 @@
           <!-- Usamos la directiva *ngIf para mostrar u ocultar el componente hijo -->
           <app-reloj-fuego *ngIf="mostrarRelojFuego"></app-reloj-fuego>
           </div>
+
+          <div class="zen-container">
+            <button (click)="toggleRelojZen()">
+              {{ mostrarRelojZen ? 'Ocultar Reloj Zen' : 'Mostrar Reloj Zen' }}
+            </button>
+          
+            <!-- Usamos la directiva *ngIf para mostrar u ocultar el componente hijo -->
+            <app-reloj-zen *ngIf="mostrarRelojZen"></app-reloj-zen>
+            </div>
