@@ -1,0 +1,23 @@
+<div class="reloj-estrellas">
+    <div class="constelacion horas">
+      <div *ngFor="let estrella of estrellasHoras; let i = index" 
+           [ngStyle]="{'transform': 'rotate(' + (i * 30) + 'deg) translateX(150px)'}" 
+           class="estrella"></div>
+    </div>
+    <div class="constelacion minutos">
+      <div *ngFor="let estrella of estrellasMinutos; let i = index" 
+           [ngStyle]="{'transform': 'rotate(' + (i * 6) + 'deg) translateX(150px)'}" 
+           class="estrella"></div>
+    </div>
+    <div class="constelacion segundos">
+      <div *ngFor="let estrella of estrellasSegundos; let i = index" 
+           [ngStyle]="{'transform': 'rotate(' + (i * 6) + 'deg) translateX(150px)'}" 
+           class="estrella"></div>
+    </div>
+    
+    <!-- Visualización numérica del tiempo -->
+    <div class="hora-numero">
+      <span>{{ horas }} : {{ minutos }} : {{ segundos }}</span>
+    </div>
+  </div>
+  

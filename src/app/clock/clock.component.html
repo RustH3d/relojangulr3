@@ -169,3 +169,12 @@
       <!-- Usamos la directiva *ngIf para mostrar u ocultar el componente hijo -->
       <app-reloj-esfera *ngIf="mostrarRelojEsfera"></app-reloj-esfera>
       </div>
+
+      <div class="estrella-container">
+        <button (click)="toggleRelojEstrellas()">
+          {{ mostrarRelojMarcador ? 'Ocultar Reloj de Estrellas' : 'Mostrar Reloj de Estrellas' }}
+        </button>
+      
+        <!-- Usamos la directiva *ngIf para mostrar u ocultar el componente hijo -->
+        <app-reloj-estrellas *ngIf="mostrarRelojEstrellas"></app-reloj-estrellas>
+        </div>
