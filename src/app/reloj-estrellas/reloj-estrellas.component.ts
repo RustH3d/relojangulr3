@@ -10,9 +10,9 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './reloj-estrellas.component.css'
 })
 export class RelojEstrellasComponent implements OnInit{
-  horas: number = 0;
-  minutos: number = 0;
-  segundos: number = 0;
+  horas: number = new Date().getHours();  // Inicializa con la hora actual
+  minutos: number = new Date().getMinutes();  // Inicializa con el minuto actual
+  segundos: number = new Date().getSeconds();  // Inicializa con el segundo actual
   private interval: any;
 
   // Declaración de las propiedades que contienen las estrellas
@@ -43,6 +43,11 @@ export class RelojEstrellasComponent implements OnInit{
       document.querySelector('.minutos')?.setAttribute('style', `transform: rotate(${this.minutos * 6}deg);`);
       document.querySelector('.segundos')?.setAttribute('style', `transform: rotate(${this.segundos * 6}deg);`);
     }, 1000);  // El reloj se actualiza cada segundo
+  }
+
+  guardarCambios() {
+    console.log(`Hora actualizada a: ${this.horas}:${this.minutos}:${this.segundos}`);
+   
   }
 
   generarEstrellas() {

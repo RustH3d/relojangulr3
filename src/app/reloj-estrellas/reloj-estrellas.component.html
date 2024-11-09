@@ -21,3 +21,20 @@
     </div>
   </div>
   
+
+  <div class="slider-container">
+    <label for="horas">Horas: </label>
+    <input type="range" id="horas" min="0" max="23" [(ngModel)]="horas" class="slider">
+    <span>{{ horas }}</span>
+  
+    <label for="minutos">Minutos: </label>
+    <input type="range" id="minutos" min="0" max="59" [(ngModel)]="minutos" class="slider">
+    <span>{{ minutos }}</span>
+  
+    <label for="segundos">Segundos: </label>
+    <input type="range" id="segundos" min="0" max="59" [(ngModel)]="segundos" class="slider">
+    <span>{{ segundos }}</span>
+  
+    <!-- Botón de guardar cambios -->
+    <button (click)="guardarCambios()">Guardar Cambios</button>
+  </div>

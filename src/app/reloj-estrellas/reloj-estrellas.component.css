@@ -7,6 +7,8 @@
     margin: 50px auto;
     overflow: hidden; /* Evitamos que las estrellas se salgan del borde */
   }
+
+  
   
   .constelacion {
     position: absolute;
@@ -53,4 +55,41 @@
   z-index: 10;
   top: 50%; /* Centrado verticalmente */
   transform: translateY(-50%) translateX(40px); /* Desplazado más hacia la derecha */
+  }
+
+  
+  .slider-container {
+    position: absolute;
+    bottom: 10px; /* Mantiene los controles justo debajo del reloj */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1; /* Asegura que los controles estén por encima del fondo */
+  }
+  
+  .slider-container label {
+    color: white;
+    font-size: 1.2rem;
+    margin: 10px 0;
+  }
+  
+  .slider {
+    width: 250px;
+    margin: 10px 0;
+  }
+  
+  button {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 1rem;
+  }
+  
+  button:hover {
+    background-color: #555;
   }
