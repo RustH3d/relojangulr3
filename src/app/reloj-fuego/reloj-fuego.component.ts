@@ -38,8 +38,18 @@ export class RelojFuegoComponent implements OnInit{
     this.actualizarTamanoFogata();
   }
 
+  // Método para calcular la posición de la llama dependiendo de la hora del día
   calcularPosicionLlama() {
-    // Llama más a la izquierda cuando la fogata es más pequeña
-    return (this.tamanoFogata < 100) ? 10 : 100; // Si la fogata es pequeña, la llama está muy a la izquierda
+    let desplazamiento: number;
+
+    if (this.hora >= 6 && this.hora < 18) {
+      // Día: mover las llamas hacia la izquierda (10% del tamaño de la fogata)
+      desplazamiento = this.tamanoFogata * 0.1;
+    } else {
+      // Noche: mover las llamas hacia la derecha o más centradas
+      desplazamiento = this.tamanoFogata * 0.3;  // 30% a la derecha
+    }
+
+    return desplazamiento;
   }
 }

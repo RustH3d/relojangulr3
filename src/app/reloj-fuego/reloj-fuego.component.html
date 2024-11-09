@@ -1,9 +1,5 @@
 <div class="fogata" [style.width.px]="tamanoFogata" [style.height.px]="tamanoFogata">
-    <!-- Llamas con posición calculada según el tamaño de la fogata -->
-    <div *ngFor="let llama of llamas; let i = index" 
-         class="llama"
-         [style.left.px]="calcularPosicionLlama() + (i * 30)">
-    </div>
+    <div *ngFor="let llama of llamas" class="llama" [style.left.px]="calcularPosicionLlama()"></div>
   </div>
   
   <!-- Controles para cambiar la hora manualmente -->
