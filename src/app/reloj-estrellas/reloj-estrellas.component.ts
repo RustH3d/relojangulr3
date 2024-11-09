@@ -13,7 +13,16 @@ export class RelojEstrellasComponent implements OnInit{
   horas: number = new Date().getHours();  // Inicializa con la hora actual
   minutos: number = new Date().getMinutes();  // Inicializa con el minuto actual
   segundos: number = new Date().getSeconds();  // Inicializa con el segundo actual
+
+  // Variables para los sliders
+  horasSlider: number = this.horas; 
+  minutosSlider: number = this.minutos;
+  segundosSlider: number = this.segundos;
+
   private interval: any;
+
+  // Variable para controlar la actualización del reloj
+  horaPersonalizada: boolean = false;  // Esto indica si la hora está personalizada por el usuario
 
   // Declaración de las propiedades que contienen las estrellas
   estrellasHoras: Array<any> = [];
@@ -33,21 +42,50 @@ export class RelojEstrellasComponent implements OnInit{
 
   iniciarReloj() {
     this.interval = setInterval(() => {
-      const now = new Date();
-      this.horas = now.getHours() % 12;  // Para mostrar horas de 12 horas
-      this.minutos = now.getMinutes();
-      this.segundos = now.getSeconds();
+      if (!this.horaPersonalizada) {
+        // Si la hora no ha sido personalizada, obtenemos la hora del sistema
+        const now = new Date();
+        this.horas = now.getHours() % 12;  // Para mostrar horas de 12 horas
+        this.minutos = now.getMinutes();
+        this.segundos = now.getSeconds();
+      } else {
+        // Si la hora ha sido personalizada, avanzamos los segundos, minutos y horas
+        this.segundos++;
+        if (this.segundos === 60) {
+          this.segundos = 0;
+          this.minutos++;
+        }
+        if (this.minutos === 60) {
+          this.minutos = 0;
+          this.horas++;
+        }
+        if (this.horas === 12) {  // Limitar a 12 horas
+          this.horas = 0;
+        }
+      }
 
-      // Actualizar las posiciones de las constelaciones
+      // Actualizamos las posiciones de las constelaciones
       document.querySelector('.horas')?.setAttribute('style', `transform: rotate(${this.horas * 30}deg);`);
       document.querySelector('.minutos')?.setAttribute('style', `transform: rotate(${this.minutos * 6}deg);`);
       document.querySelector('.segundos')?.setAttribute('style', `transform: rotate(${this.segundos * 6}deg);`);
+
     }, 1000);  // El reloj se actualiza cada segundo
   }
 
+  // Método para guardar los cambios realizados en los sliders
   guardarCambios() {
+    // Actualiza las variables del reloj con los valores de los sliders
+    this.horas = this.horasSlider;
+    this.minutos = this.minutosSlider;
+    this.segundos = this.segundosSlider;
+
+    // Marca que la hora ha sido personalizada
+    this.horaPersonalizada = true;
+
+    // Mostrar los cambios en consola
     console.log(`Hora actualizada a: ${this.horas}:${this.minutos}:${this.segundos}`);
-   
+    
+    // Aquí puedes añadir lógica adicional, como guardar estos valores en un servidor o localmente
   }
 
   generarEstrellas() {
