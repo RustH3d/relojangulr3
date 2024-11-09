@@ -36,3 +36,18 @@
     color: #333; /* Color oscuro para el reloj digital */
   }
   
+  /* Estilo para los controles de los sliders */
+  .slider-control {
+    margin-top: 15px;
+    text-align: center;
+  }
+  
+  input[type="range"] {
+    width: 200px;
+  }
+  
+  span {
+    margin-left: 10px;
+    font-size: 1.2em;
+  }
+  

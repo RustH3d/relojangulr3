@@ -12,5 +12,29 @@
     <div class="reloj-digital">
       <span>{{ horaDigital }}</span>
     </div>
+  
+    <!-- Controles para cambiar la hora -->
+    <div class="slider-control">
+      <label for="sliderHoras">Hora:</label>
+      <input type="range" id="sliderHoras" min="0" max="23" [(ngModel)]="sliderHoras">
+      <span>{{ sliderHoras }}</span>
+    </div>
+  
+    <!-- Controles para cambiar los minutos -->
+    <div class="slider-control">
+      <label for="sliderMinutos">Minutos:</label>
+      <input type="range" id="sliderMinutos" min="0" max="59" [(ngModel)]="sliderMinutos">
+      <span>{{ sliderMinutos }}</span>
+    </div>
+  
+    <!-- Controles para cambiar los segundos -->
+    <div class="slider-control">
+      <label for="sliderSegundos">Segundos:</label>
+      <input type="range" id="sliderSegundos" min="0" max="59" [(ngModel)]="sliderSegundos">
+      <span>{{ sliderSegundos }}</span>
+    </div>
+  
+    <!-- Botón para aplicar los cambios -->
+    <button (click)="aplicarCambios()">Aplicar cambios</button>
   </div>
   
