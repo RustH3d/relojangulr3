@@ -1,7 +1,19 @@
 <div class="contenedor-reloj">
   <div class="gotas">
-    <div class="gota" [style.animationDelay]="'0s'">{{ horas }}</div>
-    <div class="gota" [style.animationDelay]="'1s'">{{ minutos }}</div>
-    <div class="gota" [style.animationDelay]="'2s'">{{ segundos }}</div>
+    <div class="gota">{{ horas }}</div>
+    <div class="gota">{{ minutos }}</div>
+    <div class="gota">{{ segundos }}</div>
   </div>
 </div>
+
+
+<div>
+  <label>Horas: <input type="range" min="0" max="23" [(ngModel)]="horas" (input)="onSliderChange()"></label>
+  <label>Minutos: <input type="range" min="0" max="59" [(ngModel)]="minutos" (input)="onSliderChange()"></label>
+  <label>Segundos: <input type="range" min="0" max="59" [(ngModel)]="segundos" (input)="onSliderChange()"></label>
+</div>
+<!-- Botón para guardar los cambios -->
+<button (click)="guardarCambios()">Guardar cambios</button>
+
+
+

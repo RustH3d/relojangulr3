@@ -11,25 +11,72 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './reloj-flip.component.css'
 })
 export class RelojFlipComponent {
-  public horas: string = '00';
-  public minutos: string = '00';
-  public segundos: string = '00';
+  public horas: number = 0;
+  public minutos: number = 0;
+  public segundos: number = 0;
+  private intervalId: any;
+  public modoManual: boolean = false;
+  private usandoHoraManual: boolean = false;
 
   ngOnInit(): void {
-    this.actualizarReloj();
-    setInterval(() => this.actualizarReloj(), 1000);
+    this.iniciarReloj();
+  }
+
+  ngOnDestroy(): void {
+    clearInterval(this.intervalId);
+  }
+
+  private iniciarReloj(): void {
+    this.intervalId = setInterval(() => this.actualizarReloj(), 1000);
   }
 
   private actualizarReloj(): void {
-    const now = new Date();
-    this.horas = this.formatearNumero(now.getHours());
-    this.minutos = this.formatearNumero(now.getMinutes());
-    this.segundos = this.formatearNumero(now.getSeconds());
+    if (!this.usandoHoraManual) {
+      const now = new Date();
+      this.horas = now.getHours();
+      this.minutos = now.getMinutes();
+      this.segundos = now.getSeconds();
+    } else {
+      this.incrementarTiempo();
+    }
   }
 
-  private formatearNumero(num: number): string {
+  
+
+  
+
+  
+  /* public formatearNumero(num: number): string {
     return num < 10 ? `0${num}` : `${num}`;
+  } */
+
+
+  public onSliderChange(): void {
+    clearInterval(this.intervalId);
+    this.modoManual = true; // Activa el modo manual
   }
+
+  public guardarCambios(): void {
+    this.usandoHoraManual = true;
+    clearInterval(this.intervalId);
+    this.iniciarReloj();
+  }
+
+  private incrementarTiempo(): void {
+    this.segundos++;
+    if (this.segundos >= 60) {
+      this.segundos = 0;
+      this.minutos++;
+    }
+    if (this.minutos >= 60) {
+      this.minutos = 0;
+      this.horas++;
+    }
+    if (this.horas >= 24) {
+      this.horas = 0;
+    }
+  }
+
 
   public colorGota: string = '#00aaff';
 
