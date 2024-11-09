@@ -10,3 +10,20 @@
     </div>
   </div>
   
+  <!-- Controles para cambiar la hora, minutos y segundos -->
+  <div class="botones controles-reloj">
+    <label>
+      Hora:
+      <input type="number" [(ngModel)]="inputHoras" min="0" max="23">
+    </label>
+    <label>
+      Minutos:
+      <input type="number" [(ngModel)]="inputMinutos" min="0" max="59">
+    </label>
+    <label>
+      Segundos:
+      <input type="number" [(ngModel)]="inputSegundos" min="0" max="59">
+    </label>
+    <button (click)="aplicarCambios()">Aplicar cambios</button>
+  </div>
+  

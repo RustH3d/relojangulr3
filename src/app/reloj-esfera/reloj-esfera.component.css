@@ -39,14 +39,25 @@
     background-color: rgba(87, 12, 94, 0.6); /* Amarillo para segundos */
   }
   
-  /* Estilo para los botones, asegurándote de que estén por encima de las esferas */
-  .botones {
-    position: relative;
-    z-index: 3; /* Los botones estarán por encima de las esferas */
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
+  input {
+    width: 60px;
+    margin: 10px;
+    padding: 10px;
+    font-size: 1.2rem;
+    text-align: center;
+    border-radius: 5px;
+    border: 2px solid #ccc;
+  }
+  
+  input:focus {
+    border-color: #4CAF50; /* Color verde al enfocar */
   }
 
+  .controles-reloj {
+    margin-top: 50px; /* Ajusta el valor según lo que necesites */
+    display: flex;
+    gap: 15px; /* Espacio entre los inputs */
+    justify-content: center;
+  }
   
   
